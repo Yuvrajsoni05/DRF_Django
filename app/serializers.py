@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.forms import fields
 from rest_framework import serializers
 from .models import *
 
@@ -42,5 +43,14 @@ class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
     
+    
+    
+class JobDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        models = JobDetail
+        fields = "__all__"
+        
+    
+        
 
         
