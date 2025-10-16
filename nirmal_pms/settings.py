@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-))5a!1@e=e9z#o^ep^@5scxxa6s!fex#(tmz%x!juasiur_r2w
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+LOGIN_URL = 'login-view'
 
 # Application definition
 
@@ -56,10 +56,15 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = 'app.Registration'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ]
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+   
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    )
+
 }
+
 
 
 

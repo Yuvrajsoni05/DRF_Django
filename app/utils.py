@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from django.contrib import messages
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
 
@@ -14,3 +15,10 @@ def api_response(data=None,message=None ,status_code=None):
 
 
 
+
+
+
+
+
+class CustomIsAuthenticated(IsAuthenticated):
+    message = 'You must be logged in to access this resource.'

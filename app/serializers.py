@@ -9,6 +9,7 @@ from .models import *
 
 
 
+
 class UserSerializers(serializers.ModelSerializer):
     class Meta:
         model = Registration
@@ -41,15 +42,30 @@ class RegisterUserSerializer(serializers.ModelSerializer):
     
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
+
     password = serializers.CharField(required=True)
     
     
     
 class JobDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        models = JobDetail
+        model = JobDetail
         fields = "__all__"
+    
+    
+    
+class JobListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobDetail
+        exclude = ['id']
         
+        
+        
+        
+        
+
+
+
     
         
 
